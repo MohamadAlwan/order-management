@@ -1,0 +1,732 @@
+{
+	"info": {
+		"_postman_id": "d3ae0d42-8607-49fd-b0fa-0d98f850b50b",
+		"name": "Order Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20566425"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/api/v1/auth/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9090/api/v1/auth/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer",
+			"item": [
+				{
+					"name": "create customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Fadel\",\r\n    \"lastName\":\"Shalhout\",\r\n    \"bornAt\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/project/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"project",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all customers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/project/order/4/customer/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"project",
+								"order",
+								"4",
+								"customer",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get customer by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhLmdtYWlsLmNvbSIsImlhdCI6MTY1NDU4MTQxOCwiZXhwIjoxNjU1MTg2MjE4fQ.99OdYiqhiOD_4dRr6hgqxXuWMrFG70vz5-8Pb34_hgpo0O8NJb6G12jdOeDpCU2PrKAMoYJNhsAKrzIbfS5aIg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit a customer",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a customer",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "create product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Fadel\",\r\n    \"lastName\":\"Shalhout\",\r\n    \"bornAt\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/project/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"project",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/project/order/4/customer/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"project",
+								"order",
+								"4",
+								"customer",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhLmdtYWlsLmNvbSIsImlhdCI6MTY1NDU4MTQxOCwiZXhwIjoxNjU1MTg2MjE4fQ.99OdYiqhiOD_4dRr6hgqxXuWMrFG70vz5-8Pb34_hgpo0O8NJb6G12jdOeDpCU2PrKAMoYJNhsAKrzIbfS5aIg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit a product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "create order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Fadel\",\r\n    \"lastName\":\"Shalhout\",\r\n    \"bornAt\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/project/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"project",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/project/order/4/customer/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"project",
+								"order",
+								"4",
+								"customer",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get order by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhLmdtYWlsLmNvbSIsImlhdCI6MTY1NDU4MTQxOCwiZXhwIjoxNjU1MTg2MjE4fQ.99OdYiqhiOD_4dRr6hgqxXuWMrFG70vz5-8Pb34_hgpo0O8NJb6G12jdOeDpCU2PrKAMoYJNhsAKrzIbfS5aIg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit a order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "stock",
+			"item": [
+				{
+					"name": "create stock",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Fadel\",\r\n    \"lastName\":\"Shalhout\",\r\n    \"bornAt\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/project/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"project",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all stocks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/project/order/4/customer/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"project",
+								"order",
+								"4",
+								"customer",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get stock by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhLmdtYWlsLmNvbSIsImlhdCI6MTY1NDU4MTQxOCwiZXhwIjoxNjU1MTg2MjE4fQ.99OdYiqhiOD_4dRr6hgqxXuWMrFG70vz5-8Pb34_hgpo0O8NJb6G12jdOeDpCU2PrKAMoYJNhsAKrzIbfS5aIg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit a stock",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a stock",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product order",
+			"item": [
+				{
+					"name": "create product order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\":\"Fadel\",\r\n    \"lastName\":\"Shalhout\",\r\n    \"bornAt\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/project/customer",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"project",
+								"customer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all product orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/project/order/4/customer/2",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"project",
+								"order",
+								"4",
+								"customer",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get product order by id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhLmdtYWlsLmNvbSIsImlhdCI6MTY1NDU4MTQxOCwiZXhwIjoxNjU1MTg2MjE4fQ.99OdYiqhiOD_4dRr6hgqxXuWMrFG70vz5-8Pb34_hgpo0O8NJb6G12jdOeDpCU2PrKAMoYJNhsAKrzIbfS5aIg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit a product order",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/customer/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"customer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete a product order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/product_order/product/1/order/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"product_order",
+								"product",
+								"1",
+								"order",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
