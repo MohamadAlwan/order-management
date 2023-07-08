@@ -30,6 +30,7 @@ public class Product_orderServiceImp implements Product_orderService {
 
     @Override
     public Product_orderDto createProduct_Order(Product_orderDto product_orderDto, Integer productId, Integer orderId) {
+
         Product_order product_order = mapToEntity(product_orderDto);
         Product product = productRepository.findById(productId).orElseThrow(() -> new ResourceNotFoundException("Product", "id", productId));
         Order order = orderRepository.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("Order", "id", orderId));
@@ -48,49 +49,44 @@ public class Product_orderServiceImp implements Product_orderService {
     }
 
     @Override
-    public Product_orderDto getProduct_OrderById(Integer productId,Integer orderId) {
-        Product product = productRepository.findById(productId).orElseThrow(() -> new ResourceNotFoundException("Product", "id", productId));
-        Order order = orderRepository.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("Order", "id", orderId));
-        Product_orderPK product_orderPK = new Product_orderPK(product,order);
-        Product_order product_order = product_orderRepository.findById(product_orderPK).orElseThrow();
+    public Product_orderDto getProduct_OrderById(Integer id) {
+        Product_order product_order = product_orderRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product_order", "id", id));
         return mapToDto(product_order);
     }
 
     @Override
-    public Product_orderDto updateProduct_Order(Integer productId,Integer orderId, Product_orderDto product_orderDto) {
-        Product product = productRepository.findById(productId).orElseThrow(() -> new ResourceNotFoundException("Product", "id", productId));
-        Order order = orderRepository.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("Order", "id", orderId));
-        Product_orderPK product_orderPK = new Product_orderPK(product,order);
-        Product_order product_order = product_orderRepository.findById(product_orderPK).orElseThrow();
-        product_order.setVat(product_orderDto.getVat());
-        product_order.setPrice(product_orderDto.getPrice());
+    public Product_orderDto updateProduct_Order(Integer id, Product_orderDto product_orderDto) {
+        Product_order product_order = product_orderRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product_order", "id", id));
         product_order.setQuantity(product_orderDto.getQuantity());
-        return mapToDto(product_order);
+        product_order.setPrice(product_orderDto.getPrice());
+        product_order.setVat(product_orderDto.getVat());
+
+        Product_order updatedProduct_order = product_orderRepository.save(product_order);
+        return mapToDto(updatedProduct_order);
     }
 
     @Override
-    public void deleteProduct_Order(Integer productId,Integer orderId) {
-        Product product = productRepository.findById(productId).orElseThrow(() -> new ResourceNotFoundException("Product", "id", productId));
-        Order order = orderRepository.findById(orderId).orElseThrow(() -> new ResourceNotFoundException("Order", "id", orderId));
-        Product_orderPK product_orderPK = new Product_orderPK(product,order);
-        Product_order product_order = product_orderRepository.findById(product_orderPK).orElseThrow();
+    public void deleteProduct_Order(Integer id) {
+        Product_order product_order = product_orderRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Product_order", "id", id));
         product_orderRepository.delete(product_order);
     }
 
-    private Product_orderDto mapToDto(Product_order product_order){
-        Product_orderDto product_orderDto  =  new Product_orderDto();
-        Product_orderPK product_orderPK = new Product_orderPK(product_order.getProductId(),product_order.getOrderId());
-        //product_orderDto.setProduct_orderPK(product_orderPK);
+    private Product_orderDto mapToDto(Product_order product_order) {
+        Product_orderDto product_orderDto = new Product_orderDto();
+        product_orderDto.setId(product_order.getId());
+        product_orderDto.setQuantity(product_order.getQuantity());
         product_orderDto.setPrice(product_order.getPrice());
         product_orderDto.setVat(product_order.getVat());
-        product_orderDto.setQuantity(product_order.getQuantity());
         return product_orderDto;
     }
 
-    private Product_order mapToEntity(Product_orderDto product_orderDto){
+    private Product_order mapToEntity(Product_orderDto product_orderDto) {
         Product_order product_order = new Product_order();
-        product_order.setPrice(product_orderDto.getPrice());
         product_order.setQuantity(product_orderDto.getQuantity());
+        product_order.setPrice(product_orderDto.getPrice());
         product_order.setVat(product_orderDto.getVat());
         return product_order;
     }

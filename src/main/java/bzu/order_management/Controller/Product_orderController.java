@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Api(value = "product_order controller exposes the CRUD operations in the REST APIs")
+@RolesAllowed("ROLE_ADMIN")
 @RestController
 @RequestMapping("product_order")
 public class Product_orderController {
@@ -33,10 +34,10 @@ public class Product_orderController {
     }
 
     @ApiOperation(value = "REST API to get product orders by id")
-    @RolesAllowed("ROLE_USER")
-    @GetMapping("product/{pid}/order/{oid}")
-    public ResponseEntity<Product_orderDto> getProduct_orderById(@PathVariable(name="pid")Integer pid,@PathVariable(name="oid")Integer oid){
-        return  ResponseEntity.ok().body(product_orderService.getProduct_OrderById(pid,oid));
+    @RolesAllowed({"ROLE_USER","ROLE_ADMIN"})
+    @GetMapping("{id}")
+    public ResponseEntity<Product_orderDto> getProduct_orderById(@PathVariable(name="id") Integer id){
+        return  ResponseEntity.ok().body(product_orderService.getProduct_OrderById(id));
     }
 
     @ApiOperation(value = "REST API to create product orders")
@@ -49,18 +50,16 @@ public class Product_orderController {
 
     @ApiOperation(value = "REST API to edit product orders")
     @RolesAllowed("ROLE_ADMIN")
-    @PutMapping("product/{pid}/order/{oid}")
-    public ResponseEntity<Product_orderDto> updateProduct_order(@PathVariable(name="pid") Integer pid
-            , @PathVariable(name="oid") Integer oid, @Valid @RequestBody Product_orderDto product_orderDto){
-        return new ResponseEntity(product_orderService.updateProduct_Order(pid,oid,product_orderDto),HttpStatus.OK);
+    @PutMapping("{id}")
+    public ResponseEntity<Product_orderDto> updateProduct_order(@PathVariable(name="id") Integer id, @Valid @RequestBody Product_orderDto product_orderDto){
+        return new ResponseEntity(product_orderService.updateProduct_Order(id,product_orderDto),HttpStatus.OK);
     }
 
     @ApiOperation(value = "REST API to delete product orders")
     @RolesAllowed("ROLE_ADMIN")
-    @DeleteMapping("product/{pid}/order/{oid}")
-    public ResponseEntity<String> updateProduct_order(@PathVariable(name="pid")Integer pid
-            , @PathVariable(name="oid")Integer oid){
-        product_orderService.deleteProduct_Order(pid,oid);
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> updateProduct_order(@PathVariable(name="id") Integer id){
+        product_orderService.deleteProduct_Order(id);
         return new ResponseEntity("Deleted successfully",HttpStatus.OK);
     }
 }

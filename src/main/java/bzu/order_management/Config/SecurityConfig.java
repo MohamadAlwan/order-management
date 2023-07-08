@@ -22,7 +22,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration //Spring configuration class
 @EnableWebSecurity
 @RequiredArgsConstructor
-@EnableGlobalMethodSecurity(jsr250Enabled = true) // to enable a method access control with @RoleAllowed annotation
+@EnableGlobalMethodSecurity(prePostEnabled = true) // to enable a method access control with @RoleAllowed annotation
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -31,6 +31,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtAuthenticationEntryPoint authenticationEntryPoint;
 
+    public SecurityConfig(CustomUserDetailsService userDetailsService, JwtAuthenticationEntryPoint authenticationEntryPoint) {
+        this.userDetailsService = userDetailsService;
+        this.authenticationEntryPoint = authenticationEntryPoint;
+    }
     @Bean
     public JwtAuthenticationFilter jwtAuthenticationFilter(){
         return  new JwtAuthenticationFilter();

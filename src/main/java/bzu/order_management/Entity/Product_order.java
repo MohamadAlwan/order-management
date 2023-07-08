@@ -12,16 +12,16 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@IdClass(Product_orderPK.class)
 public class Product_order {
-
     @Id
+    @GeneratedValue
+    private Integer id;
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="productId" , referencedColumnName = "id")
     private Product productId;
 
-    @Id
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="orderId" , referencedColumnName = "id")

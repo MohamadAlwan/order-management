@@ -16,6 +16,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Api(value = "Order controller exposes the CRUD operations in the REST APIs")
+@RolesAllowed("ROLE_ADMIN")
 @RestController
 @RequestMapping("order")
 public class OrderController {

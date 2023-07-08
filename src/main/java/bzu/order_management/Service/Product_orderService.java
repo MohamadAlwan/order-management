@@ -11,9 +11,9 @@ public interface Product_orderService {
 
     List<Product_orderDto> getAllProduct_Order();
 
-    Product_orderDto getProduct_OrderById(Integer productId,Integer orderId);
+    Product_orderDto getProduct_OrderById(Integer id);
 
-    Product_orderDto updateProduct_Order(Integer productId,Integer orderId, Product_orderDto product_orderDto);
+    Product_orderDto updateProduct_Order(Integer id, Product_orderDto product_orderDto);
 
-    void deleteProduct_Order(Integer productId,Integer orderId);
+    void deleteProduct_Order(Integer id);
 }

@@ -5,12 +5,10 @@ import lombok.Data;
 
 @Data
 public class Product_orderDto {
-
-    private Product_orderPK product_orderPK;
-
+    private Integer id;
+    private Integer productId;
+    private Integer orderId;
     private Integer quantity;
-
     private Long price;
-
     private Long vat;
 }
