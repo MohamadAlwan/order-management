@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   mysql:
-      image: mysql:8
+      image: mysql
       container_name: mysql
       environment:
         - "MYSQL_DATABASE=orderManagement"
@@ -10,12 +10,12 @@ services:
         - "MYSQL_PASSWORD=root"
         - "MYSQL_ROOT_PASSWORD=root"
       ports:
-        - "127.0.0.1:3306:3307"
+        - "127.0.0.1:3308:3309"
       volumes:
-        - C:/M.kharma_data/bzu/WebServices2022/docker/data/mysql:/var/lib/mysql
+        - C:\Users\PC\Videos\Captures:/var/lib/mysql
   app:
-    image: 'rest-api:latest'
-    container_name: rest-api
+    image: 'springboot-restful-webservices:latest'
+    container_name: springboot-mysql-container
     depends_on:
       - mysql
     environment:
@@ -25,4 +25,4 @@ services:
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update
       - SERVER_PORT=9090
     ports:
-      - "127.0.0.1:9092:9091"
+      - "127.0.0.1:9090:9091"

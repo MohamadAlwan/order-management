@@ -50,21 +50,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .exceptionHandling()
-                .authenticationEntryPoint(authenticationEntryPoint)//This class to handle the error of un-authorized request
+                .authenticationEntryPoint(authenticationEntryPoint)
                 .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auth/**").permitAll()
-                .antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
+                .antMatchers("/api/v1/auth/**").permitAll()
+                .antMatchers("/v3/api-docs/**").permitAll()
+                .antMatchers("/v2/api-docs/**").permitAll()
                 .antMatchers("/swagger-ui/**").permitAll()
                 .antMatchers("/swagger-resources/**").permitAll()
-                .antMatchers("/api-docs").permitAll()
-                .anyRequest()
-                .authenticated();
+                .antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers("/webjars/**").permitAll()
+                .anyRequest().authenticated();
+
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
