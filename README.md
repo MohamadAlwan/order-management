@@ -7,7 +7,7 @@
 
 ### First you need to sign up and create an account
 ```bash
-To access the sign up: localhost:9090/api/v1/auth/signup
+To access the sign up: localhost:9090/auth/signup
 ```
 ```bash
 You need to pass:
@@ -19,7 +19,7 @@ You need to pass:
 
 ### After creating an account you need to log in 
 ```bash
-To access the sign in: localhost:9090/api/v1/auth/signin
+To access the sign in: localhost:9090/auth/signin
 ```
 ```bash
 You need to pass:
@@ -142,15 +142,15 @@ The request path is: localhost:9090/product_order with a GET method
 ```
 ```bash
 The third function the product_order API have is get product_order by id
-The request path is: localhost:9090/product_order/product/{pid}/order/{oid} with a GET method
+The request path is: localhost:9090/product_order/{id} with a GET method
 ```
 ```bash
 The fourth function the product_order API have is update product_order
-The request path is: localhost:9090/product_order/product/{pid}/order/{oid} with a PUT method
+The request path is: localhost:9090/product_order/{id} with a PUT method
 ```
 ```bash
 The fifth function the product_order API have is delete product_order
-The request path is: localhost:9090/product_order/product/{pid}/order/{oid} with a DELETE method
+The request path is: localhost:9090/product_order/{id} with a DELETE method
 ```
 
 
