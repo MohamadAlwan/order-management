@@ -153,5 +153,13 @@ The fifth function the product_order API have is delete product_order
 The request path is: localhost:9090/product_order/{id} with a DELETE method
 ```
 
+### Build Docker Image from Dockerfile
+```bash
+docker build -t order_management .
+```
 
+### Run a docker image in a docker container
+```bash
+docker run --network springboot-mysql-net --name springboot-mysql-container -p 8080:8080 springboot-restful-webservices
+```
 
